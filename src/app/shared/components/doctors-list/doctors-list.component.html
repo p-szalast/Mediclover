@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col"><span>First name</span></th>
+        <th scope="col"><span>Last name</span></th>
+        <th scope="col"><span>Birth date</span></th>
+        <th scope="col"><span>PESEL</span></th>
+        <th scope="col"><span>Phone number</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of doctors$ | async" (click)="clickDoctorHandler(doctor.id)">
+        <td>{{ doctor.firstName }}</td>
+        <td>{{ doctor.lastName }}</td>
+        <td>{{ doctor.birthDate }}</td>
+        <td>{{ doctor.pesel }}</td>
+        <td>{{ doctor.phoneNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

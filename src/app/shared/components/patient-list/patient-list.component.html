@@ -1,0 +1,83 @@
+<div class="container">
+  <div>
+    <!-- TODO: Rewrite as SEPARATE COMPONENTS -->
+    <!-- <as-search-input [placeholder]="'Last Name'" [id]="'lastName'"></as-search-input>
+      <as-search-input [placeholder]="'Birth date'" [id]="'birthDate'"></as-search-input>
+      <as-search-input [placeholder]="'PESEL'" [id]="'pesel'"></as-search-input>
+      <as-search-input [placeholder]="'Phone Number'" [id]="'phoneNumber'"></as-search-input> -->
+
+    <form [formGroup]="filterFormGroup" *ngIf="filterFormGroup">
+      <div class="search-group d-flex flex-direction-column gap-3" formGroupName="searchGroup">
+        <div class="input-group mb-3">
+          <span class="input-group-text">🔍</span>
+          <input id="lastName" type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">🔍</span>
+          <input
+            id="birthDate"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="
+              (filterFormGroup.get('searchGroup.birthDate')?.invalid && filterFormGroup.get('searchGroup.birthDate')?.dirty) ||
+              (filterFormGroup.get('searchGroup.birthDate')?.pristine &&
+                filterFormGroup.get('searchGroup.birthDate')?.value &&
+                filterFormGroup.get('searchGroup.birthDate')?.invalid)
+            "
+            placeholder="Birth Date"
+            formControlName="birthDate"
+          />
+          <div class="invalid-feedback">
+            {{ filterFormGroup.get('searchGroup.birthDate')?.errors ? 'Please enter data in format dd.mm.yyy' : '' }}
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">🔍</span>
+          <input id="pesel" type="text" class="form-control" placeholder="PESEL" formControlName="pesel" />
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">🔍</span>
+          <input id="phoneNumber" type="text" class="form-control" placeholder="Phone Number" formControlName="phoneNumber" />
+        </div>
+      </div>
+
+      <div class="d-inline-flex align-items-center justify-content-center mb-3">
+        <label for="sortSelect" class="sort-label">Sort by:</label>
+        <select id="sortSelect" class="form-select" formControlName="sort">
+          <option value="FIRST_NAME">First name</option>
+          <option value="LAST_NAME">Last name</option>
+          <option value="BIRTH_DATE">Birth date</option>
+          <option value="PESEL">PESEL</option>
+          <option value="PHONE_NUMBER">Phone number</option>
+        </select>
+      </div>
+      <!-- MY NOTES: NON REACTIVE FORM:
+      <as-search-input
+        [placeholder]="'Last Name'"
+        [id]="'lastName'"
+        (valueChanged)="onChangeFilterValue($event, 'lastName')"
+      ></as-search-input>-->
+    </form>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col"><span>First name</span></th>
+        <th scope="col"><span>Last name</span></th>
+        <th scope="col"><span>Birth date</span></th>
+        <th scope="col"><span>PESEL</span></th>
+        <th scope="col"><span>Phone number</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients$ | async" (click)="clickPatientHandler(patient.id)">
+        <td>{{ patient.firstName }}</td>
+        <td>{{ patient.lastName }}</td>
+        <td>{{ patient.birthDate }}</td>
+        <td>{{ patient.pesel }}</td>
+        <td>{{ patient.phoneNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

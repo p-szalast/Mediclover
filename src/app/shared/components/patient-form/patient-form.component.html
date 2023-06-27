@@ -1,0 +1,226 @@
+<div class="container">
+  <h2>{{ mode === 'edit' ? 'Edit Patient' : 'New Patient' }}</h2>
+  <hr />
+
+  <form [formGroup]="patientDataFormGroup" *ngIf="(mode === 'edit' && selectedPatient) || mode === 'new'">
+    <h3>Basic Information</h3>
+    <hr />
+    <div formGroupName="personalData" class="row">
+      <div class="col">
+        <!-- TODO: separate input component -->
+        <div class="form-outline">
+          <input
+            type="text"
+            id="firstName"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('personalData.firstName')?.invalid && !patientDataFormGroup.get('personalData.firstName')?.pristine
+            "
+            formControlName="firstName"
+          />
+          <label class="form-label" for="firstName">First name</label>
+          <div class="invalid-feedback">
+            {{ handleValidationErrors(patientDataFormGroup.get('personalData.firstName')?.errors) }}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="lastName"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('personalData.lastName')?.invalid && !patientDataFormGroup.get('personalData.lastName')?.pristine
+            "
+            formControlName="lastName"
+          />
+          <label class="form-label" for="lastName">Last name</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('personalData.lastName')?.errors) }}</div>
+        </div>
+      </div>
+    </div>
+    <div formGroupName="personalData" class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="birthDate"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('personalData.birthDate')?.invalid && !patientDataFormGroup.get('personalData.birthDate')?.pristine
+            "
+            formControlName="birthDate"
+          />
+          <label class="form-label" for="birthDate">Birth date</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('personalData.birthDate')?.errors) }}</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="pesel"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('personalData.pesel')?.invalid && !patientDataFormGroup.get('personalData.pesel')?.pristine
+            "
+            formControlName="pesel"
+          />
+          <label class="form-label" for="pesel">PESEL</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('personalData.pesel')?.errors) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Picture</h3>
+    <hr />
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="url"
+            id="imgUrl"
+            class="form-control"
+            [class.is-invalid]="patientDataFormGroup.get('imgUrl')?.invalid && !patientDataFormGroup.get('imgUrl')?.pristine"
+            formControlName="imgUrl"
+          />
+          <label class="form-label" for="imgUrl">Url</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('imgUrl')?.errors) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Address</h3>
+    <hr />
+
+    <div formGroupName="addressData" class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="city"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('addressData.city')?.invalid && !patientDataFormGroup.get('addressData.city')?.pristine
+            "
+            formControlName="city"
+          />
+          <label class="form-label" for="city">City</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('addressData.city')?.errors) }}</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="street"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('addressData.street')?.invalid && !patientDataFormGroup.get('addressData.street')?.pristine
+            "
+            formControlName="street"
+          />
+          <label class="form-label" for="street">Street</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('addressData.street')?.errors) }}</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="postalCode"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('addressData.postalCode')?.invalid && !patientDataFormGroup.get('addressData.postalCode')?.pristine
+            "
+            formControlName="postalCode"
+          />
+          <label class="form-label" for="postalCode">Postal Code</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('addressData.postalCode')?.errors) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="addressData" class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="country"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('addressData.country')?.invalid && !patientDataFormGroup.get('addressData.country')?.pristine
+            "
+            formControlName="country"
+          />
+          <label class="form-label" for="country">Country</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('addressData.country')?.errors) }}</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="text"
+            id="province"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('addressData.province')?.invalid && !patientDataFormGroup.get('addressData.province')?.pristine
+            "
+            formControlName="province"
+          />
+          <label class="form-label" for="province">Province</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('addressData.province')?.errors) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Contact</h3>
+    <hr />
+
+    <div formGroupName="contactData" class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="string"
+            id="phoneNumber"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('contactData.phoneNumber')?.invalid && !patientDataFormGroup.get('contactData.phoneNumber')?.pristine
+            "
+            formControlName="phoneNumber"
+          />
+          <label class="form-label" for="phoneNumber">Phone number</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('contactData.phoneNumber')?.errors) }}</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            [class.is-invalid]="
+              patientDataFormGroup.get('contactData.email')?.invalid && !patientDataFormGroup.get('contactData.email')?.pristine
+            "
+            formControlName="email"
+          />
+          <label class="form-label" for="email">Email</label>
+          <div class="invalid-feedback">{{ handleValidationErrors(patientDataFormGroup.get('contactData.email')?.errors) }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around">
+      <button type="button" class="btn btn-light" (click)="navBack()">Cancel</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="formSubmitHandler()"
+        [disabled]="patientDataFormGroup.invalid || patientDataFormGroup.pristine"
+      >
+        {{ mode === 'edit' ? 'Save' : 'Add' }}
+      </button>
+    </div>
+  </form>
+</div>

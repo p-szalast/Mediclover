@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h2>Patient's details</h2>
+    <button type="button" class="btn btn-secondary" (click)="clickEditHandler()">Edit patient</button>
+  </div>
+  <hr />
+  <form>
+    <h3>Basic Information</h3>
+    <hr />
+    <img class="img-thumbnail" [src]="selectedPatient?.imgUrl" />
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="firstName" class="form-control-plaintext" [value]="selectedPatient?.firstName" readonly />
+          <label class="form-label" for="firstName">First name</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="lastName" class="form-control-plaintext" [value]="selectedPatient?.lastName" readonly />
+          <label class="form-label" for="lastName">Last name</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="birthDate" class="form-control-plaintext" [value]="selectedPatient?.birthDate" readonly />
+          <label class="form-label" for="birthDate">Birth date</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="PESEL" class="form-control-plaintext" [value]="selectedPatient?.pesel" readonly />
+          <label class="form-label" for="PESEL">PESEL</label>
+        </div>
+      </div>
+    </div>
+
+    <h3>Address</h3>
+    <hr />
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="city" class="form-control-plaintext" [value]="selectedPatient?.city" readonly />
+          <label class="form-label" for="city">City</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="street" class="form-control-plaintext" [value]="selectedPatient?.street" readonly />
+          <label class="form-label" for="street">Street</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="postalCode" class="form-control-plaintext" [value]="selectedPatient?.postalCode" readonly />
+          <label class="form-label" for="postalCode">Postal Code</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="country" class="form-control-plaintext" [value]="selectedPatient?.country" readonly />
+          <label class="form-label" for="country">Country</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="province" class="form-control-plaintext" [value]="selectedPatient?.province" readonly />
+          <label class="form-label" for="province">Province</label>
+        </div>
+      </div>
+    </div>
+
+    <h3>Contact</h3>
+    <hr />
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="phoneNumber" class="form-control-plaintext" [value]="selectedPatient?.phoneNumber" readonly />
+          <label class="form-label" for="phoneNumber">Phone number</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="email" id="email" class="form-control-plaintext" [value]="selectedPatient?.email" readonly />
+          <label class="form-label" for="email">Email</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h2>Doctors's details</h2>
+  </div>
+  <hr />
+  <form>
+    <h3>Basic Information</h3>
+    <hr />
+    <img class="img-thumbnail" [src]="selectedDoctor?.imgUrl" />
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="firstName" class="form-control-plaintext" [value]="selectedDoctor?.firstName" readonly />
+          <label class="form-label" for="firstName">First name</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="lastName" class="form-control-plaintext" [value]="selectedDoctor?.lastName" readonly />
+          <label class="form-label" for="lastName">Last name</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="birthDate" class="form-control-plaintext" [value]="selectedDoctor?.birthDate" readonly />
+          <label class="form-label" for="birthDate">Birth date</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="PESEL" class="form-control-plaintext" [value]="selectedDoctor?.pesel" readonly />
+          <label class="form-label" for="PESEL">PESEL</label>
+        </div>
+      </div>
+    </div>
+
+    <h3>Address</h3>
+    <hr />
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="city" class="form-control-plaintext" [value]="selectedDoctor?.city" readonly />
+          <label class="form-label" for="city">City</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="street" class="form-control-plaintext" [value]="selectedDoctor?.street" readonly />
+          <label class="form-label" for="street">Street</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="postalCode" class="form-control-plaintext" [value]="selectedDoctor?.postalCode" readonly />
+          <label class="form-label" for="postalCode">Postal Code</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="country" class="form-control-plaintext" [value]="selectedDoctor?.country" readonly />
+          <label class="form-label" for="country">Country</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="province" class="form-control-plaintext" [value]="selectedDoctor?.province" readonly />
+          <label class="form-label" for="province">Province</label>
+        </div>
+      </div>
+    </div>
+
+    <h3>Contact</h3>
+    <hr />
+
+    <div class="row">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" id="phoneNumber" class="form-control-plaintext" [value]="selectedDoctor?.phoneNumber" readonly />
+          <label class="form-label" for="phoneNumber">Phone number</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="email" id="email" class="form-control-plaintext" [value]="selectedDoctor?.email" readonly />
+          <label class="form-label" for="email">Email</label>
+        </div>
+      </div>
+    </div>
+  </form>
+  <hr />
+  <h2>Doctors's patients</h2>
+  <hr />
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col"><span>First name</span></th>
+        <th scope="col"><span>Last name</span></th>
+        <th scope="col"><span>Birth date</span></th>
+        <th scope="col"><span>PESEL</span></th>
+        <th scope="col"><span>Phone number</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of doctorPatients" (click)="clickPatientHandler(patient.id)">
+        <td>{{ patient.firstName }}</td>
+        <td>{{ patient.lastName }}</td>
+        <td>{{ patient.birthDate }}</td>
+        <td>{{ patient.pesel }}</td>
+        <td>{{ patient.phoneNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
